@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File
 from PIL import Image
 import traceback
+import random
 
 app = FastAPI()
 
@@ -9,10 +10,19 @@ async def analyze(file: UploadFile = File(...)):
     try:
         image = Image.open(file.file)
 
-        # Dummy AI logic (replace with your model)
+        # 🔥 Simulated forensic classification
+        outcomes = [
+            "Homicide suspected",
+            "Accidental death",
+            "Natural cause",
+            "Unclear - further investigation required"
+        ]
+
+        result = random.choice(outcomes)
+
         return {
             "message": "Analysis complete",
-            "result": "Object detected"
+            "result": result
         }
 
     except Exception as e:
