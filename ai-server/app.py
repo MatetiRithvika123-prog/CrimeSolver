@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, File
 from PIL import Image
+import numpy as np
 import traceback
-import random
 
 app = FastAPI()
 
@@ -9,16 +9,18 @@ app = FastAPI()
 async def analyze(file: UploadFile = File(...)):
     try:
         image = Image.open(file.file)
+        img = np.array(image)
 
-        # 🔥 Simulated forensic classification
-        outcomes = [
-            "Homicide suspected",
-            "Accidental death",
-            "Natural cause",
-            "Unclear - further investigation required"
-        ]
+        # simple heuristic: detect strong red presence (blood-like areas)
+        red_channel = img[:, :, 0]
+        red_intensity = red_channel.mean()
 
-        result = random.choice(outcomes)
+        if red_intensity > 120:
+            result = "Homicide suspected"
+        elif red_intensity > 90:
+            result = "Accidental death"
+        else:
+            result = "Unclear - further investigation required"
 
         return {
             "message": "Analysis complete",
