@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrimeSceneSolver - AI Forensic Analysis Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="text-center">
+            <div class="mb-8">
+                <div class="inline-flex items-center justify-center w-14 h-14 bg-blue-600 rounded-full mb-3">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-3xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">CrimeSceneSolver</h1>
+                <p id="usernameDisplay" class="text-gray-400 mt-2"></p>
+                <p class="text-lg text-gray-300 mb-6">AI-Powered Forensic Investigation Platform</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto mb-12">
+                <p class="text-gray-400 leading-relaxed">
+                    Advanced artificial intelligence system for crime scene analysis. Upload images, detect evidence, 
+                    classify crime types, and generate comprehensive forensic reports.
+                </p>
+            </div>
+
+            <a href="upload.html" 
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            Start Investigation</a>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <div class="text-blue-400 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Image Analysis</h3>
+                    <p class="text-gray-400 text-sm">Upload crime scene images for AI analysis</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <div class="text-purple-400 mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Evidence Detection</h3>
+                    <p class="text-gray-400 text-sm">Automatically identify potential evidence</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <div class="text-green-400 mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v1a1 1 0 001 1h4a1 1 0 001-1v-1m3-2V8a2 2 0 00-2-2H8a2 2 0 00-2 2v6m0 4a2 2 0 104 0m-4 0a2 2 0 114 0"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Case Management</h3>
+                    <p class="text-gray-400 text-sm">Track and manage investigation cases</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+function logout() {
+localStorage.removeItem("loggedIn");
+window.location.href = "login.html";
+}
+</script> 
+</body>
+<button onclick="logout()" class="absolute top-6 right-6 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">Logout</button>
+</html>

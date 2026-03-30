@@ -1,0 +1,131 @@
+/* Custom styles for CrimeSceneSolver */
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.confidence-bar {
+    transition: width 0.5s ease-in-out;
+}
+
+.evidence-tag {
+    transition: all 0.2s ease;
+}
+
+.evidence-tag:hover {
+    transform: scale(1.05);
+}
+
+.case-card {
+    transition: all 0.3s ease;
+}
+
+.case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.upload-area {
+    transition: all 0.3s ease;
+}
+
+.upload-area.dragover {
+    border-color: #3B82F6;
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.chart-container {
+    position: relative;
+    height: 200px;
+}
+
+.modal {
+    backdrop-filter: blur(4px);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.crime-badge {
+    background-color: #7C3AED;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.crime-homicide { background-color: #DC2626; }
+.crime-robbery { background-color: #D97706; }
+.crime-assault { background-color: #7C3AED; }
+.crime-kidnapping { background-color: #0891B2; }
+.crime-drug { background-color: #059669; }
+
+.evidence-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    background-color: rgba(55, 65, 81, 0.5);
+    margin-bottom: 0.5rem;
+}
+
+.evidence-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.75rem;
+    color: #60A5FA;
+}
+
+.confidence-high { color: #10B981; }
+.confidence-medium { color: #F59E0B; }
+.confidence-low { color: #EF4444; }
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-analyzing { background-color: #F59E0B; }
+.status-completed { background-color: #10B981; }
+.status-error { background-color: #EF4444; }
+
+.scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: #1F2937;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #4B5563;
+    border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #6B7280;
+}

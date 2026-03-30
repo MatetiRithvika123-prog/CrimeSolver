@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CrimeSolver Login</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 flex items-center justify-center h-screen text-white">
+
+<div class="bg-gray-800 p-8 rounded-xl shadow-lg w-96">
+
+<h2 class="text-2xl font-bold text-center text-blue-400 mb-2">
+CrimeSolver
+</h2>
+
+<p class="text-gray-400 text-center mb-6">
+Sign in to continue
+</p>
+
+<form id="loginForm">
+
+<input
+type="email"
+placeholder="Email"
+required
+class="w-full p-3 mb-3 rounded bg-gray-700 border border-gray-600 focus:outline-none"
+/>
+
+<input
+type="password"
+placeholder="Password"
+required
+class="w-full p-3 mb-4 rounded bg-gray-700 border border-gray-600 focus:outline-none"
+/>
+
+<button
+type="submit"
+class="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold">
+Login
+</button>
+
+</form>
+
+<div class="text-center mt-4">
+<span class="text-gray-400">No account?</span>
+<a href="signup.html" class="text-blue-400">Sign Up</a>
+</div>
+
+</div>
+
+<script src="auth.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+if (localStorage.getItem("loggedIn")) {
+window.location.href = "index.html";
+}
+});
+</script>
+
+</body>
+</html>
