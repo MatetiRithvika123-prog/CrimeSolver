@@ -4,7 +4,7 @@ const path = require('path');
 class PythonService {
     async analyzeImage(imagePath) {
         return new Promise((resolve, reject) => {
-            const pythonProcess = spawn('C:\\Users\\Mateti\\AppData\\Local\\Programs\\Python\\Python312\\python.exe', [
+            const pythonProcess = spawn('python', [
                 path.join(__dirname, '../ai/analyze.py'),
                 imagePath
             ]);
