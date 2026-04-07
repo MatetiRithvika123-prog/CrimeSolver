@@ -45,6 +45,11 @@ class CrimeAnalyzer:
                     "label": crime_prediction,
                     "confidence": round(confidence * 100, 2)
                 }]
+            return {
+                "crime_prediction": crime_prediction,
+                "confidence": round(confidence * 100, 2),
+                "detected_evidence": detected_evidence
+            }
             
         except Exception as e:
             print(f"Error analyzing image: {str(e)}", file=sys.stderr)
