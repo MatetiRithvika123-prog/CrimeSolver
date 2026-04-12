@@ -2,7 +2,7 @@ const axios = require("axios");
 const FormData = require("form-data");
 const fs = require("fs");
 
-const HF_URL = "https://matetirithvika-crime-ai-analyzer.hf.space/run/predict";
+const HF_URL = "https://matetirithvika-crime-ai-analyzer.hf.space/api/predict";
 
 class CrimeController {
     async analyzeImage(req, res) {
