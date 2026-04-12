@@ -1,39 +1,47 @@
 const axios = require("axios");
-const FormData = require("form-data");
 const fs = require("fs");
 
 const HF_URL = "https://matetirithvika-crime-ai-analyzer.hf.space/api/predict";
 
 class CrimeController {
-    async analyzeImage(req, res) {
-        try {
-            if (!req.file) {
-                return res.status(400).json({ error: "No image file provided" });
-            }
+  async analyzeImage(req, res) {
+    try {
 
-            const imagePath = req.file.path;
+      if (!req.file) {
+        return res.status(400).json({ error: "No image uploaded" });
+      }
 
-            // Prepare form data for HuggingFace request
-            const form = new FormData();
-            form.append("image", fs.createReadStream(imagePath));
+      const imagePath = req.file.path;
 
-            // Send image to HuggingFace Space
-            const response = await axios.post(
-                HF_URL,
-                form,
-                { headers: form.getHeaders() }
-            );
+      // Convert image to base64 (Gradio expects this)
+      const imageBuffer = fs.readFileSync(imagePath);
+      const base64Image = imageBuffer.toString("base64");
 
-            // Remove temporary uploaded file
-            fs.unlinkSync(imagePath);
+      const payload = {
+        data: [`data:image/png;base64,${base64Image}`]
+      };
 
-            return res.json(response.data);
+      const response = await axios.post(HF_URL, payload, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        timeout: 60000
+      });
 
-        } catch (error) {
-            console.error("Analysis error:", error.message);
-            return res.status(500).json({ error: "Failed to analyze image" });
-        }
+      const result = response.data.data[0];
+
+      res.json(result);
+
+    } catch (error) {
+
+      console.error("Analysis error:", error.message);
+
+      res.status(500).json({
+        error: "Failed to analyze image"
+      });
+
     }
+  }
 }
 
 module.exports = new CrimeController();
