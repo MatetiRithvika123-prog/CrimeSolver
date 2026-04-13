@@ -1,24 +1,23 @@
 const axios = require("axios");
 const fs = require("fs");
-const FormData = require("form-data");
 
-const HF_URL = "https://matetirithvika-crime-ai-analyzer.hf.space/";
+const HF_URL = "https://matetirithvika-crime-ai-analyzer.hf.space/call/predict";
 
 class CrimeController {
+
   async analyzeImage(req, res) {
+
     try {
 
       if (!req.file) {
         return res.status(400).json({ error: "No image uploaded" });
       }
 
-      const form = new FormData();
-      form.append("image", fs.createReadStream(req.file.path));
+      const imageBuffer = fs.readFileSync(req.file.path);
+      const base64 = imageBuffer.toString("base64");
 
-      const response = await axios.post(HF_URL, form, {
-        headers: form.getHeaders(),
-        maxBodyLength: Infinity,
-        timeout: 60000
+      const response = await axios.post(HF_URL, {
+        data: [`data:image/png;base64,${base64}`]
       });
 
       res.json(response.data);
@@ -32,7 +31,9 @@ class CrimeController {
       });
 
     }
+
   }
+
 }
 
 module.exports = new CrimeController();
